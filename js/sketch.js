@@ -13,10 +13,9 @@ function setup() {
 	cellSize = 64;
 
 	cols = Math.floor(width / cellSize);
-	rows = Math.floor(height / cellSize);
+	rows = Math.floor(height / cellSize) - 1;
 
 	textSize(50);
-	textAlign(CENTER, CENTER);
 
 	createMap();
 }
@@ -24,11 +23,19 @@ function setup() {
 
 
 function draw() {
+	background(255);
+
+	textAlign(CENTER, CENTER);
 	for (let i = 0; i < cols; i++) {
 		for (let j = 0; j < rows; j++) {
 			map[j][i].draw();
 		}
 	}
+
+
+	textAlign(LEFT, CENTER);
+	fill(0);
+	text(`Bombs: ${bombsCount}`, 20, height - 60);
 }
 
 
